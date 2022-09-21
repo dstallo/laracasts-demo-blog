@@ -1,4 +1,5 @@
 <?php $wrapper = false; ?>
+
 @foreach(["success", "info", "error"] as $type)
     @if (session()->has($type))
         @if (! $wrapper)

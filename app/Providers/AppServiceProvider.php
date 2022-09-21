@@ -2,7 +2,11 @@
 
 namespace App\Providers;
 
-use Illuminate\Pagination\Paginator;
+//use Illuminate\Pagination\Paginator;
+use App\Services\Newsletter;
+use MailchimpMarketing\ApiClient;
+use App\Services\MailchimpNewsletter;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -14,7 +18,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        // Service container binding for resolution of Newsletter interface, which defaults to MailchimpNewsletter
+        app()->bind(Newsletter::class, function() {
+            return new MailchimpNewsletter(new ApiClient());
+        });
+        
     }
 
     /**
@@ -25,5 +33,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //Paginator::useTailwind();
+        Model::unguard();
     }
 }

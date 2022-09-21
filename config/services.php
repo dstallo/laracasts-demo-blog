@@ -21,6 +21,12 @@ return [
         'scheme' => 'https',
     ],
 
+    'mailchimp' => [
+        'key' => env('MAILCHIMP_KEY'),
+        'server' => env('MAILCHIMP_SERVER_PREFIX'),
+        'list' => env('MAILCHIMP_LIST')
+    ],
+
     'postmark' => [
         'token' => env('POSTMARK_TOKEN'),
     ],

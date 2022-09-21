@@ -48,6 +48,10 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
 
+    public function comments() {
+        return $this->hasMany(Comment::class);
+    }
+
 /*  Mutators. 
     This executes pre storing a password into the db from User::create / User::save
     Mutators get field from method name: set[field]Attribute.

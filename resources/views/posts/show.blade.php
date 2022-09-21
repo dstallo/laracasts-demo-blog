@@ -49,6 +49,9 @@
                     {!! $post->body !!}
                 </div>
             </div>
+        
+            @include ("posts._comments")
+    
         </article>
     </main>
 

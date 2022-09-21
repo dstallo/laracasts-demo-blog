@@ -2,7 +2,7 @@
 
 @section("content")
     
-    <main class="max-w-6xl mx-auto mt-10 lg:mt-20 space-y-6 text-center>
+    <main class="max-w-6xl mx-auto mt-10 lg:mt-20 space-y-6 text-center">
         <h1 class="font-bold text-xl uppercase">Register</h1>
         <form method="POST" action="/register" class="bg-gray-100 border border-gray-300 rounded mx-5 max-w-lg p-5 mx-auto text-left">
             @csrf
@@ -36,7 +36,7 @@
             </div>
                         
             <div class="mb-6">
-                <button type="submit" class="bg-blue-400 text-white rounded py-2 px-4 hover:bg-blue-500 focus:bg-blue-500">Register</button>
+                <x-button>Register</x-button>
             </div>
         </form>
     </main>

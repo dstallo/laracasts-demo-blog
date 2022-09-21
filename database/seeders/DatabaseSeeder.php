@@ -3,24 +3,16 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
-use App\Models\User;
-use App\Models\Category;
 use App\Models\Post;
+use App\Models\User;
+use App\Models\Comment;
+use App\Models\Category;
+use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     *
-     * @return void
-     */
     public function run()
     {
-        User::truncate();
-        Post::truncate();
-        Category::truncate();
-
         $user = User::factory()->create();
 
         $work = Category::create([
@@ -40,9 +32,10 @@ class DatabaseSeeder extends Seeder
             'category_id' => 2,
             'user_id'     => 2
         ]);
-        Post::factory(10)->create([
+        $posts=Post::factory(10)->create([
             'category_id' => 3,
             'user_id'     => 1
         ]);
+        Comment::factory(5)->create(["post_id" => $posts->last()->id]);
     }
 }
