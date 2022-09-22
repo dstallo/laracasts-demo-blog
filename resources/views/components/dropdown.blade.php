@@ -1,7 +1,7 @@
 @props(["label"])
 
-<div x-data="{show:false}" class="relative flex lg:inline-flex items-center bg-gray-100 rounded-xl">
-    <button @click="show = ! show" @click.away="show = false" class="py-2 pl-3 pr-9 text-sm font-semibold">
+<div x-data="{show:false}" {{ $attributes(["class"=>"relative lg:inline-flex flex items-center bg-gray-100 rounded-xl"]) }}>
+    <button @click="show = ! show" @click.away="show = false" class="py-2 pl-3 pr-9 w-full text-sm font-semibold text-left">
         {{ $label }}
     </button>
     <svg class="transform -rotate-90 absolute pointer-events-none" style="right: 12px;" width="22"

@@ -9,28 +9,30 @@
         <style>html {scroll-behavior: smooth;}</style>
     </head>
     <body style="font-family: Open Sans, sans-serif">
-        <section class="px-6 py-8">
-            <nav class="md:flex md:justify-between md:items-center">
+        <section class="px-6 py-6">
+            <header class="lg:flex justify-between items-center">
                 <div>
                     <a href="/">
                         <img src="/images/logo.svg" alt="Laracasts Logo" width="165" height="16">
                     </a>
                 </div>
 
-                <div class="mt-8 md:mt-0">
+                <nav class="lg:mt-0 mt-8"> 
                 @auth
-                    <span class="text-xs mr-3">Welcome, <span class="font-bold">{{ auth()->user()->name }}</span></span>
-                    <form method="POST" action="/logout" class="inline">
-                        @csrf
-                        <button type="submit" class="inline text-xs font-bold uppercase hover:text-blue-500 focus:text-blue-500">Log Out</button>
-                    </form>
+                    <span class="text-center text-xs mr-2">Welcome</span>
+                    <x-dropdown :label="auth()->user()->name" class="lg:mt-0 mt-1">
+                        <x-dropdown-item href="/admin/posts/create" :active="request()->is('admin/posts/create')">New post</x-dropdown-item>
+                        <x-dropdown-item href="/admin/categories/create" :active="request()->is('admin/categories/create')">New category</x-dropdown-item>
+                        <x-dropdown-item href="#" data-x="{}" @click.prevent="document.getElementById('logout-form').submit();">Log out</x-dropdown-item>
+                        <form method="POST" action="/logout" id="logout-form" class="hidden"> @csrf </form>
+                    </x-dropdown>
                 @else
                     <a href="/register" class="text-xs font-bold uppercase hover:text-blue-500 focus:text-blue-500">Register</a>
                     <a href="/login" class="text-xs font-bold uppercase hover:text-blue-500 focus:text-blue-500 ml-3">Log In</a>
                 @endauth
-                    <x-button type="link" href="#newsletter" class="ml-4 px-6">Subscribe for Updates</x-button>
-                </div>
-            </nav>
+                    <x-form.button type="link" href="#newsletter" class="lg:ml-4 lg:inline lg:mt-0 mt-4 block px-6">Subscribe for Updates</x-form.button>
+                </nav>
+            </header>
 
             @yield("content")
 
@@ -54,7 +56,7 @@
                                 </div>
                             </div>
                             
-                            <x-button type="submit" class="mt-4 lg:mt-0 lg:ml-3 py-3 px-8">Subscribe</x-button>
+                            <x-form.button type="submit" class="mt-4 lg:mt-0 lg:ml-3 py-3 px-8">Subscribe</x-form.button>
                         </form>
                     </div>
                 </div>

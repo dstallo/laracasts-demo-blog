@@ -14,7 +14,7 @@
             <p class="mt-2 text-red-500 text-xs">{{ $message }}</p>
         @enderror
             <div class="mt-4 pt-4 border-t border-gray-200 text-right">
-                <x-button type="submit">Post</x-button>
+                <x-form.button type="submit">Post</x-form.button>
             </div>
         </form>
     </x-panel>
